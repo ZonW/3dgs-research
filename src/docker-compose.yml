@@ -1,0 +1,60 @@
+services:
+    colmap:
+        build:
+            context: ./colmap
+            dockerfile: Dockerfile
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities: [gpu]
+        volumes:
+            - /home/wyundi/Projects/3d/data:/workspace
+            # - /home/ubuntu/engine/kaleida-engine/workspace:/workspace
+            # -  E:\colmap_docker\container-space:/workspace
+        working_dir: /workspace
+        shm_size: 32G
+        stdin_open: true
+        tty: true
+    gsplat:
+        build:
+            context: ./gsplat
+            dockerfile: Dockerfile
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities: [gpu]
+        volumes:
+            - /home/wyundi/Projects/3d/data:/workspace
+            # - /home/ubuntu/engine/kaleida-engine/workspace:/workspace
+            # -  E:\colmap_docker\container-space:/workspace
+        ports:
+            - "8080:8080"
+        working_dir: /workspace
+        shm_size: 32G
+        stdin_open: true
+        tty: true
+    splatformer:
+        build:
+            context: ./splatformer
+            dockerfile: Dockerfile
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - driver: nvidia
+                          count: all
+                          capabilities: [gpu]
+        volumes:
+            - /home/wyundi/Projects/3d/data:/workspace
+            # - /home/ubuntu/engine/kaleida-engine/workspace:/workspace
+            # -  E:\colmap_docker\container-space:/workspace
+        working_dir: /workspace
+        shm_size: 32G
+        stdin_open: true
+        tty: true
