@@ -1,3 +1,6 @@
 [submodule "src/gsplat/gsplat"]
 	path = src/gsplat/gsplat
 	url = git@github.com:nerfstudio-project/gsplat.git
+[submodule "src/splatformer/SplatFormer"]
+	path = src/splatformer/SplatFormer
+	url = git@github.com:ChenYutongTHU/SplatFormer.git
